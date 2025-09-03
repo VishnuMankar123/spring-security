@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log in</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f9f9f9;
+        }
+        .login-box {
+            width: 350px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .btn {
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .social-btn {
+            background: #f1f1f1;
+            border: none;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="login-box">
+    <h2>Log in or sign up</h2>
+
+    <!-- Step 1: Username -->
+    <div id="step1">
+        <input type="text" id="username" placeholder="Email address" required />
+        <button class="btn" onclick="showPassword()">Continue</button>
+    </div>
+
+    <!-- Step 2: Password (hidden initially) -->
+    <form id="loginForm" action="/login" method="post" style="display:none;">
+        <input type="hidden" name="username" id="hiddenUsername">
+        <input type="password" name="password" placeholder="Password" required />
+        <button class="btn" type="submit">Login</button>
+    </form>
+
+    <hr>
+
+    <button class="social-btn" onclick="window.location.href='/oauth2/authorization/google'">Continue with Google</button>
+
+</div>
+
+<script>
+    function showPassword() {
+        let username = document.getElementById("username").value;
+        if (username.trim() === "") {
+            alert("Please enter your email address");
+            return;
+        }
+        // Step 1 hide
+        document.getElementById("step1").style.display = "none";
+        // Step 2 show
+        document.getElementById("loginForm").style.display = "block";
+        // Username hidden field me daal do
+        document.getElementById("hiddenUsername").value = username;
+    }
+</script>
+</body>
+</html>

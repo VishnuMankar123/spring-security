@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login or Sign up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .btn {
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .btn-login { background-color: black; color: white; }
+        .btn-signup { background-color: #007bff; color: white; }
+    </style>
+</head>
+<body>
+<h1>Welcome</h1>
+<p>Please choose an option:</p>
+<button class="btn btn-login" onclick="window.location.href='/login.html'">Login</button>
+<button class="btn btn-signup" onclick="window.location.href='/signup.html'">Sign Up</button>
+</body>
+</html>
