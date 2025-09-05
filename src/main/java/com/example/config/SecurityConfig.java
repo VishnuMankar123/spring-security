@@ -42,6 +42,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/home", "/login", "/css/**").permitAll()
+                        .requestMatchers("/api/auth/forgot-password", "/api/auth/reset-password", "/api/auth/validate-reset-token").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -72,5 +73,10 @@ public class SecurityConfig {
                 .roles("USER")
                 .build();
         return new InMemoryUserDetailsManager(user);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

@@ -5,7 +5,7 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "users_entity")
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserEntity {
@@ -17,10 +17,12 @@ public class UserEntity {
     private String username;
     private String password;
     private String name;
+    @Column(unique = true, nullable = false)
     private String email;
     private String phone;
     @Column(name = "role")
     private String role;
+    private boolean enabled;
 
     public Long getId() {
         return id;
@@ -78,6 +80,11 @@ public class UserEntity {
         this.role = role;
     }
 
-    // getters and setters
+    public boolean isEnabled() {
+        return enabled;
+    }
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 }
 
